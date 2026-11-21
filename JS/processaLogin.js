@@ -29,32 +29,9 @@ export async function logar(prevencao){
     //faz a comparação com os usuarios na lista
     compara(nomeUsu, passUsu, listaUsuarios);
 
-    //coloca conteudo da outra página na tela / main
-    //buscaArquivo();
-
-    // Cria as linhas da tabela percorrendo cada item da lista
-    const linhasTabela = listaUsuarios.map(usuario => `
-        <tr>
-            <th scope="row">${usuario.id}</th>
-            <td>${usuario.username}</td>
-            <td>${usuario.email}</td>
-        </tr>
-    `).join('');
-
-    //mostra dados pegos do link(temporario)
-    dados.innerHTML = 
-    `
-        <table class="table">
-            <thead>
-                <tr>
-                <th scope="col">id</th>
-                <th scope="col">username</th>
-                <th scope="col">email</th>
-                </tr>
-            </thead>
-            <tbody>
-                ${linhasTabela}
-            </tbody>
-        </table>
-    `;
+    listaUsuarios.forEach(usuario => {
+        console.log(
+            `id: ${usuario.id}\nusername: ${usuario.username}\nemail: ${usuario.email}`
+        );
+    });
 }
