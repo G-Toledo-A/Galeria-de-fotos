@@ -15,11 +15,13 @@ export function compara(username, password, lista) {
     //se o usuario for encontrado
     if (usuarioEncontrado) {
         //mostra os dados no console
+        /*
         console.log(
             `Login aprovado!\n` +
             `Nome inserido: ${username} | Encontrado: ${usuarioEncontrado.username}\n` +
             `Senha inserida: ${password} | Encontrada: ${usuarioEncontrado.email}`
         );
+        */
         
         //muda a tela
         geraImagens();

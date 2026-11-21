@@ -58,6 +58,6 @@ export async function logar(prevencao){
         }
     }
     catch(erro) {
-        console.error("Não foi possível buscar usuários: ", erro);
+        abreMensagem("Não foi possível buscar usuários: ", erro);
     }
 }
