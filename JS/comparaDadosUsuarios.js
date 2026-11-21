@@ -1,17 +1,31 @@
 import { geraImagens } from "./geraImagens.js";
 import { abreMensagem } from "./modalDmensagem.js";
 
-// Pega o nome e a senha colocados no form
 export function compara(username, password, lista) {
-    //verifica se os dados batem com pelo menos 1 usuario da lista
-    const usuarioValido = lista.some(usuario => 
-        usuario.username === username && usuario.password === password
+    //tira espaços e deixa tudo minusculo
+    const nomeUsu = username.trim().toLowerCase();
+    const senhUsu = password.trim().toLowerCase();
+
+    //se os dados baterem com algum usuario, preenche variavel
+    const usuarioEncontrado = lista.find(usuario => 
+        nomeUsu === usuario.username.toLowerCase() && 
+        senhUsu === usuario.email.toLowerCase()
     );
 
-    if (usuarioValido) {
-        //abre a página
+    //se o usuario for encontrado
+    if (usuarioEncontrado) {
+        //mostra os dados no console
+        console.log(
+            `Login aprovado!\n` +
+            `Nome inserido: ${username} | Encontrado: ${usuarioEncontrado.username}\n` +
+            `Senha inserida: ${password} | Encontrada: ${usuarioEncontrado.email}`
+        );
+        
+        //muda a tela
         geraImagens();
+    //se não
     } else {
-        abreMensagem();
+        //mensagem de erro
+        abreMensagem("O usuário não foi encontrado.");
     }
 }

@@ -4,7 +4,9 @@ const btnFechar = document.querySelector("[data-bs-dismiss]");
 
 btnFechar.addEventListener("click", fechaMensagem);
 
-export function abreMensagem(){
+export function abreMensagem(mensagem){
+    const paragrafo = document.getElementById("mensagem");
+    paragrafo.innerHTML = mensagem;
     caixaDialogo.showModal();
 }
 

@@ -1,8 +1,7 @@
-import { conteudo } from "./geraLogin.js";
-
 export function geraImagens(){
-    //procura imagens
+    const conteudo = document.getElementById("conteudo");
 
+    //procura imagens
     conteudo.innerHTML = 
     `
         <section class="card" style="max-width: 320px">

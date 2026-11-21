@@ -1,4 +1,5 @@
 import { compara } from "./comparaDadosUsuarios.js";
+import { abreMensagem } from "./modalDmensagem.js";
 
 //pega o link da API
 const API = 'https://jsonplaceholder.typicode.com/users';
@@ -19,19 +20,44 @@ export async function logar(prevencao){
     //previne que a página recarregue
     prevencao.preventDefault();
 
-    // Pega os dados da API e guarda na lista (array) 'listaUsuarios'
-    const listaUsuarios = await requisitar('');
+    try{
+        // Pega os dados da API e guarda na lista (array) 'listaUsuarios'
+        const listaUsuarios = await requisitar('');
 
-    //pega dados do form
-    const nomeUsu = document.getElementById("InputEmail").value;
-    const passUsu = document.getElementById("InputPassword").value;
+        //mostra os dados de usuarios(serve apenas para testes)
+        /*
+        listaUsuarios.forEach(usuario => {
+            console.log(
+                `id: ${usuario.id}\nusername: ${usuario.username}\nemail: ${usuario.email}`
+            );
+        });
+        */
 
-    //faz a comparação com os usuarios na lista
-    compara(nomeUsu, passUsu, listaUsuarios);
+        //pega dados do form
+        const nomeUsu = document.getElementById("InputEmail").value;
+        const passUsu = document.getElementById("InputPassword").value;
 
-    listaUsuarios.forEach(usuario => {
-        console.log(
-            `id: ${usuario.id}\nusername: ${usuario.username}\nemail: ${usuario.email}`
-        );
-    });
+        //ve se algum dos 2 dados está faltando
+        if(!nomeUsu && !passUsu){
+            //mensagem de erro
+            abreMensagem("Insira os dados do usuário.");
+        }
+        //ve se o nome está faltando
+        else if(!nomeUsu){
+            //mensagem de erro
+            abreMensagem("Nome do usuário está vazio.");
+        }
+        //ve se a senha está faltando
+        else if(!passUsu){
+            //mensagem de erro
+            abreMensagem("Senha do usuário está vazia.");
+        }
+        else {    
+           //faz a comparação com os usuarios na lista
+           compara(nomeUsu, passUsu, listaUsuarios);
+        }
+    }
+    catch(erro) {
+        console.error("Não foi possível buscar usuários: ", erro);
+    }
 }
