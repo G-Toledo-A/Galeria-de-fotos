@@ -1,13 +1,18 @@
-//função que pega as imagens do link
-function encontraImagens(){
-    fetch('https://jsonplaceholder.typicode.com/photos')
-    .then(Response => Response.json())
-    .then(data => { 
-        console.log(data); 
-    })
-    .catch(error => console.error('Erro ao carregar o JSON: ', error));
+//pega o link da API
+const API = 'https://jsonplaceholder.typicode.com/photos';
+
+// Faz uma requisição e transforma a resposta do servidor em um objeto JavaScript
+async function requisitar(caminho, opcoes = {}) {
+    // Envia a requisição pela internet.
+    const resposta = await fetch(`${API}${caminho}`, opcoes); 
+
+    // Verifica falhas.
+    if (!resposta.ok) throw new Error(`O servidor respondeu com HTTP ${resposta.status}.`);
+
+    return resposta.json(); // Converte o JSON recebido em dados JavaScript.
 }
 
+/*
 data.forEach(imagem => {
     console.log(`Imagem: ${imagem.id}`);
     console.log(`Titulo: ${imagem.title}`);
@@ -17,3 +22,4 @@ data.forEach(imagem => {
 
 //pega o espaco em que as imagens ficarão
 const areaImagens = document.getElementById(".container");
+*/
