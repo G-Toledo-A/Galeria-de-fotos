@@ -8,11 +8,11 @@ function geraForm(){
         <!--deixar elementos de texto no lado esquerdo depois-->
         <form class="border" id="login">
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <label for="InputEmail" class="form-label">Nome de Usuário</label>
                 <input type="text" class="form-control" id="InputEmail" aria-describedby="emailHelp">
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <label for="exampleInputPassword1" class="form-label">Senha</label>
                 <input type="password" class="form-control" id="InputPassword">
             </div>
             <button type="submit" class="btn-solid theme-primary">Entrar</button>
